@@ -344,4 +344,38 @@ body {
     border: 1px solid var(--neon-blue);
     object-fit: cover;
     background: var(--dark-bg);
+}
+
+/* Hero Banner Avatar */
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    border: 2px solid var(--neon-blue);
+    object-fit: cover;
+    background: var(--dark-bg);
+    filter: drop-shadow(0 0 8px var(--neon-blue));
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.author-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.author-name {
+    font-size: 1.2rem;
+    color: var(--neon-blue);
+}
+
+.author-title {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
 } 

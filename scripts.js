@@ -15,24 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Controles de navegação
     document.getElementById('btnHome').addEventListener('click', () => {
-        // Restaura o conteúdo inicial
-        mainSection.innerHTML = initialContent;
-        
-        // Mostra os cards de navegação
-        document.querySelectorAll('.section-card').forEach(card => {
-            card.style.display = 'block';
-        });
-        
-        // Mostra as mensagens de boas-vindas
-        welcomeMessage.style.display = 'block';
-        warningMessage.style.display = 'block';
-    });
-
-    document.getElementById('btnBack').addEventListener('click', () => {
-        // Se estiver em uma seção, volta para a home
-        if (mainSection.querySelector('.section-content')) {
-            document.getElementById('btnHome').click();
-        }
+        showHome();
     });
 
     // Controle de música
@@ -103,6 +86,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Função para mostrar a tela inicial
+    function showHome() {
+        // Limpa o conteúdo principal
+        mainSection.innerHTML = '';
+        
+        // Recria os cards de navegação
+        const navCardsDiv = document.createElement('div');
+        navCardsDiv.className = 'nav-cards';
+        
+        const sections = ['identity', 'history', 'abilities'];
+        const icons = ['🎭', '📖', '⚡'];
+        const titles = ['IDENTIDADE', 'HISTÓRIA', 'HABILIDADES'];
+        
+        sections.forEach((section, index) => {
+            const card = document.createElement('div');
+            card.className = 'card section-card';
+            card.dataset.section = section;
+            
+            card.innerHTML = `
+                <div class="card-icon">${icons[index]}</div>
+                <h3>${titles[index]}</h3>
+            `;
+            
+            card.addEventListener('click', () => navigateToSection(section));
+            navCardsDiv.appendChild(card);
+        });
+        
+        mainSection.appendChild(navCardsDiv);
+        
+        // Adiciona as mensagens
+        const warningDiv = document.createElement('div');
+        warningDiv.className = 'warning-message glitch';
+        warningDiv.innerHTML = '<span>⚠️ ACESSO RESTRITO – SE VOCÊ NÃO É EU, SAIA DAQUI!</span>';
+        
+        const welcomeDiv = document.createElement('div');
+        welcomeDiv.className = 'welcome-message';
+        welcomeDiv.innerHTML = '<p class="typing">Bem-vindo ao Codex Tahely. Se você está lendo isso, significa que alguém hackeou meu diário ou eu estou ferrada. De qualquer forma... divirta-se.</p>';
+        
+        mainSection.appendChild(warningDiv);
+        mainSection.appendChild(welcomeDiv);
+    }
+
     // Função para navegar entre seções
     function navigateToSection(section) {
         const sections = {
@@ -110,6 +135,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: 'Identidade',
                 content: `
                     <div class="section-content">
+                        <div class="nav-cards">
+                            <div class="card section-card" data-section="identity">
+                                <div class="card-icon">🎭</div>
+                                <h3>IDENTIDADE</h3>
+                            </div>
+                            <div class="card section-card" data-section="history">
+                                <div class="card-icon">📖</div>
+                                <h3>HISTÓRIA</h3>
+                            </div>
+                            <div class="card section-card" data-section="abilities">
+                                <div class="card-icon">⚡</div>
+                                <h3>HABILIDADES</h3>
+                            </div>
+                        </div>
                         <h3>Identidade Pessoal</h3>
                         <p>Nascida como Gih'ah Tahely, transformada no Sujeito 89P13, e renascida como Ra'ven Andor. 
                         Minha identidade é um reflexo das múltiplas vidas que fui forçada a viver.</p>
@@ -157,19 +196,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // Esconde os cards de navegação
-        document.querySelectorAll('.section-card').forEach(card => {
-            card.style.display = 'none';
-        });
-
-        // Esconde as mensagens de boas-vindas
-        welcomeMessage.style.display = 'none';
-        warningMessage.style.display = 'none';
-
         // Carrega o conteúdo da seção
         mainSection.innerHTML = `
             <h2 class="section-title">${sections[section].title}</h2>
             ${sections[section].content}
         `;
+
+        // Reativa os event listeners nos cards
+        document.querySelectorAll('.section-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                const newSection = e.currentTarget.dataset.section;
+                navigateToSection(newSection);
+            });
+        });
     }
 }); 

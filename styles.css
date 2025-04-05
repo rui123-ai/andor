@@ -432,6 +432,14 @@ body {
     border: 1px solid var(--neon-blue);
     object-fit: cover;
     background: var(--dark-bg);
+    filter: brightness(0.9) contrast(1.1);
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-avatar {
+    filter: brightness(1.1) contrast(1.2);
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
 }
 
 /* Hero Banner Avatar */

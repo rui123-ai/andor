@@ -282,6 +282,8 @@ body {
     border: 2px solid var(--neon-blue);
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+    background: var(--dark-bg);
+    filter: drop-shadow(0 0 10px var(--neon-blue));
 }
 
 .profile-status {
@@ -332,4 +334,14 @@ body {
 .threat-dot.active {
     background: var(--neon-pink);
     box-shadow: 0 0 10px var(--neon-pink);
+}
+
+/* Ajuste para a imagem de contato */
+.contact-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    border: 1px solid var(--neon-blue);
+    object-fit: cover;
+    background: var(--dark-bg);
 } 

@@ -27,6 +27,7 @@ body {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--neon-blue);
+    margin-left: 300px;
 }
 
 .header-left {
@@ -65,6 +66,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: 300px;
 }
 
 .nav-actions {
@@ -74,8 +76,7 @@ body {
 
 /* Main Content */
 .main-content {
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
     padding: 2rem;
 }
 
@@ -90,8 +91,9 @@ body {
 }
 
 .content-grid {
+    margin-left: 300px;
     display: grid;
-    grid-template-columns: 300px 1fr 300px;
+    grid-template-columns: 1fr 300px;
     gap: 2rem;
 }
 
@@ -149,7 +151,8 @@ body {
 /* Responsive Design */
 @media (max-width: 1200px) {
     .content-grid {
-        grid-template-columns: 300px 1fr;
+        grid-template-columns: 1fr;
+        margin-left: 300px;
     }
     
     .sidebar {
@@ -158,12 +161,20 @@ body {
 }
 
 @media (max-width: 768px) {
+    .profile-sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .main-header,
+    .sub-nav,
+    .content-grid {
+        margin-left: 0;
+    }
+
     .content-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .profile-sidebar {
-        margin-bottom: 2rem;
     }
 }
 
@@ -241,20 +252,26 @@ body {
 
 /* Profile Sidebar */
 .profile-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 300px;
     background: var(--card-bg);
-    border-radius: 8px;
-    border: 1px solid var(--neon-blue);
-    overflow: hidden;
+    border-right: 1px solid var(--neon-blue);
+    overflow-y: auto;
+    z-index: 100;
 }
 
 .profile-card {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .profile-image {
     position: relative;
-    padding: 1rem;
+    padding: 2rem 1rem;
     background: linear-gradient(45deg, var(--dark-bg), var(--header-bg));
 }
 

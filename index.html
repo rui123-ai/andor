@@ -9,24 +9,102 @@
 <body>
     <div class="terminal-overlay"></div>
     
-    <div class="access-screen">
-        <div class="warning-message glitch">
-            <span>⚠️ ACESSO RESTRITO – SE VOCÊ NÃO É EU, SAIA DAQUI!</span>
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="header-left">
+            <div class="logo">CT</div>
+            <span class="site-title">Codex Tahely</span>
         </div>
-        
-        <div class="welcome-message">
-            <p class="typing">Bem-vindo ao Codex Tahely. Se você está lendo isso, significa que alguém hackeou meu diário ou eu estou ferrada. De qualquer forma... divirta-se.</p>
+        <nav class="top-nav">
+            <a href="#" class="active">Wiki</a>
+            <a href="#">Edit</a>
+        </nav>
+        <div class="header-right">
+            <button class="cyber-button">Following</button>
+            <button class="cyber-button">Share</button>
+        </div>
+    </header>
+
+    <!-- Sub Navigation -->
+    <div class="sub-nav">
+        <div class="nav-actions">
+            <button class="cyber-button">+ New</button>
+            <button class="cyber-button">Send to</button>
+            <button class="cyber-button">Promote</button>
+            <button class="cyber-button">Page details</button>
+            <button class="cyber-button">Immersive Reader</button>
+            <button class="cyber-button">Analytics</button>
+        </div>
+        <div class="page-info">
+            <span>Published 8/23/2021</span>
+            <button class="cyber-button">Edit</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+            <h1>Gi'ah Tahely</h1>
+            <div class="author-info">
+                <img src="avatar.jpg" alt="Gi'ah Tahely" class="avatar">
+                <div class="author-details">
+                    <span class="author-name">Gi'ah Tahely</span>
+                    <span class="author-title">Hacker Suprema</span>
+                </div>
+            </div>
         </div>
 
-        <nav class="nav-buttons">
-            <button class="cyber-button" data-section="identity">IDENTIDADE</button>
-            <button class="cyber-button" data-section="history">HISTÓRIA</button>
-            <button class="cyber-button" data-section="abilities">HABILIDADES</button>
-            <button class="cyber-button" data-section="hidden">ARQUIVOS OCULTOS</button>
-            <button class="cyber-button" data-section="relations">RELAÇÕES PESSOAIS</button>
-            <button class="cyber-button" data-section="media">MÍDIA CAPTURADA</button>
-        </nav>
-    </div>
+        <!-- Content Sections -->
+        <div class="content-grid">
+            <section class="main-section">
+                <div class="warning-message glitch">
+                    <span>⚠️ ACESSO RESTRITO – SE VOCÊ NÃO É EU, SAIA DAQUI!</span>
+                </div>
+                
+                <div class="welcome-message">
+                    <p class="typing">Bem-vindo ao Codex Tahely. Se você está lendo isso, significa que alguém hackeou meu diário ou eu estou ferrada. De qualquer forma... divirta-se.</p>
+                </div>
+
+                <!-- Navigation Cards -->
+                <div class="nav-cards">
+                    <div class="card" data-section="identity">
+                        <div class="card-icon">🎭</div>
+                        <h3>IDENTIDADE</h3>
+                    </div>
+                    <div class="card" data-section="history">
+                        <div class="card-icon">📖</div>
+                        <h3>HISTÓRIA</h3>
+                    </div>
+                    <div class="card" data-section="abilities">
+                        <div class="card-icon">⚡</div>
+                        <h3>HABILIDADES</h3>
+                    </div>
+                    <div class="card" data-section="hidden">
+                        <div class="card-icon">🔒</div>
+                        <h3>ARQUIVOS OCULTOS</h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3>Wiki Home</h3>
+                </div>
+                <div class="sidebar-widget">
+                    <h3>Contacts</h3>
+                    <div class="contact-card">
+                        <img src="avatar.jpg" alt="Gi'ah Tahely" class="contact-avatar">
+                        <div class="contact-info">
+                            <span class="contact-name">Gi'ah Tahely</span>
+                            <span class="contact-title">Hacker Suprema</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
 
     <script src="scripts.js"></script>
 </body>

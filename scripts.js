@@ -4,13 +4,35 @@ document.addEventListener('DOMContentLoaded', () => {
     bgMusic.loop = true;
     let isMusicPlaying = false;
 
+    // Elementos principais
+    const mainSection = document.querySelector('.main-section');
+    const navCards = document.querySelector('.nav-cards');
+    const welcomeMessage = document.querySelector('.welcome-message');
+    const warningMessage = document.querySelector('.warning-message');
+
+    // Conteúdo inicial
+    const initialContent = mainSection.innerHTML;
+
     // Controles de navegação
     document.getElementById('btnHome').addEventListener('click', () => {
-        window.location.href = '#';
+        // Restaura o conteúdo inicial
+        mainSection.innerHTML = initialContent;
+        
+        // Mostra os cards de navegação
+        document.querySelectorAll('.section-card').forEach(card => {
+            card.style.display = 'block';
+        });
+        
+        // Mostra as mensagens de boas-vindas
+        welcomeMessage.style.display = 'block';
+        warningMessage.style.display = 'block';
     });
 
     document.getElementById('btnBack').addEventListener('click', () => {
-        window.history.back();
+        // Se estiver em uma seção, volta para a home
+        if (mainSection.querySelector('.section-content')) {
+            document.getElementById('btnHome').click();
+        }
     });
 
     // Controle de música
@@ -74,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000);
 
     // Navegação dos cards
-    document.querySelectorAll('.card').forEach(card => {
+    document.querySelectorAll('.section-card').forEach(card => {
         card.addEventListener('click', (e) => {
             const section = e.target.closest('.card').dataset.section;
             navigateToSection(section);
@@ -84,19 +106,70 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para navegar entre seções
     function navigateToSection(section) {
         const sections = {
-            identity: 'Identidade',
-            history: 'História',
-            abilities: 'Habilidades',
-            hidden: 'Arquivos Ocultos'
+            identity: {
+                title: 'Identidade',
+                content: `
+                    <div class="section-content">
+                        <h3>Identidade Pessoal</h3>
+                        <p>Nascida como Gih'ah Tahely, transformada no Sujeito 89P13, e renascida como Ra'ven Andor. 
+                        Minha identidade é um reflexo das múltiplas vidas que fui forçada a viver.</p>
+                        
+                        <h3>Origem</h3>
+                        <p>Originária de Khan'dar, cresci em meio a uma sociedade tecnologicamente avançada, 
+                        mas politicamente instável.</p>
+                    </div>
+                `
+            },
+            history: {
+                title: 'História',
+                content: `
+                    <div class="section-content">
+                        <h3>Passado</h3>
+                        <p>Minha história começa em Khan'dar, onde nasci em uma família de cientistas. 
+                        O que deveria ter sido uma infância normal se transformou em um pesadelo quando 
+                        me tornei parte de um experimento não autorizado.</p>
+                        
+                        <h3>Presente</h3>
+                        <p>Hoje, uso minhas habilidades para garantir que ninguém mais passe pelo que passei. 
+                        Como agente da CVT, trabalho para proteger aqueles que não podem se proteger.</p>
+                    </div>
+                `
+            },
+            abilities: {
+                title: 'Habilidades',
+                content: `
+                    <div class="section-content">
+                        <h3>Habilidades Técnicas</h3>
+                        <ul>
+                            <li>Hackeamento Neural Avançado</li>
+                            <li>Programação Quântica</li>
+                            <li>Manipulação de Sistemas de Segurança</li>
+                        </ul>
+                        
+                        <h3>Habilidades Físicas</h3>
+                        <ul>
+                            <li>Combate Corpo a Corpo</li>
+                            <li>Agilidade Aprimorada</li>
+                            <li>Reflexos Aumentados</li>
+                        </ul>
+                    </div>
+                `
+            }
         };
 
-        // Aqui você pode adicionar a lógica para carregar o conteúdo de cada seção
-        const mainSection = document.querySelector('.main-section');
+        // Esconde os cards de navegação
+        document.querySelectorAll('.section-card').forEach(card => {
+            card.style.display = 'none';
+        });
+
+        // Esconde as mensagens de boas-vindas
+        welcomeMessage.style.display = 'none';
+        warningMessage.style.display = 'none';
+
+        // Carrega o conteúdo da seção
         mainSection.innerHTML = `
-            <h2 class="section-title">${sections[section]}</h2>
-            <div class="section-content">
-                <p>Carregando conteúdo de ${sections[section]}...</p>
-            </div>
+            <h2 class="section-title">${sections[section].title}</h2>
+            ${sections[section].content}
         `;
     }
 }); 
